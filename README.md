@@ -1,24 +1,63 @@
-# README
+## Userテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column|Type|Option|
+|------|----|------|
+|name|string|null: false, unique: true|
+|email|string|null: false, unique: true|
+|password|string|null:false, unique:true|
+|credit_id|integer|null: false, foreign_key: true|
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+-has_many :Products
+-has_many :Comments
+-belongs_to :Credit
 
-* System dependencies
 
-* Configuration
+## Productテーブル
 
-* Database creation
+|Column|Type|Option|
+|------|----|------|
+|name|string|null: false, unique: true|
+|price|integer|null :false|
+|category|check-box|null: false|
+|status|check-box|null :false|
+|delivery_fee|check-box|null :false|
+|area|check-box|null :false|
+|term|check-box|null :false|
+|user_id|integer|null: false, foreign_key: true|
+|credit_id|integer|null: false, foreign_key: true|
 
-* Database initialization
+### Association
 
-* How to run the test suite
+-has_many :Comments
+-belongs_to :Credit
+-belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Commentテーブル
 
-* ...
+|Column|Type|Option|
+|------|----|------|
+|content|string|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|product_id|integer|null: false, foreign_key: true|
+
+### Association
+
+-belongs_to :Product
+-belongs_to :user
+
+
+## Creditテーブル
+
+|Column|Type|Option|
+|------|----|------|
+|number|integer|null: false, unique: true|
+|deadline|integer|null: false|
+|cvc|integer|null: false|
+
+### Association
+
+-belongs_to :user
+-has_many :products
