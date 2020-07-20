@@ -9,9 +9,7 @@
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|yearofbirth_id|integer|null: false|
-|monthofbirth_id|integer|null: false|
-|dayofbirth_id|integer|null: false|
+|birthday_id|integer|null: false|
 
 ### Association
 
