@@ -9,9 +9,9 @@
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|birthday_year|birthdayyear_id|null: false|
-|birthday_month|birthdaymonth_id|null: false|
-|birthday_day|birthday_id|null: false|
+|yearofbirth_id|integer|null: false|
+|monthofbirth_id|integer|null: false|
+|dayofbirth_id|integer|null: false|
 
 ### Association
 
@@ -27,18 +27,18 @@
 |name|string|null: false|
 |explanation|text|
 |price|integer|null :false|
-|category|category_id|null: false|
-|status|status_id|null :false|
-|delivery_fee|delivery_fee_id|null :false|
-|area|area_id|null :false|
-|term|term_id|null :false|
+|category_id|integer|null: false|
+|status_id|integer|null :false|
+|delivery_fee_id|integer|null :false|
+|area_id|integer|null :false|
+|term_id|integer|null :false|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
 
 -has_many :Comments
 -belongs_to :user
--has_one :item_purchaseｓ
+-has_one :item_purchase
 
 
 ## Commentテーブル
@@ -76,10 +76,10 @@
 |term_month|integer|null: false|
 |term_year|integer|null: false|
 |cvc|integer|null: false|
-|postal_code|integer|null: false, unique: true|
-|prefectures|prefectures_id|null:false|
+|postal_code|string|null: false, unique: true|
+|prefectures_id|integer|null:false|
 |city|string|null: false|
-|address|integer|null:false|
+|address|string|null:false|
 |building_name|string|
 |phone_number|string|null: false, unique: true|
 
