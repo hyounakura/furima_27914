@@ -72,10 +72,6 @@
 
 |Column|Type|Option|
 |------|----|------|
-|number|string|null: false, unique: true|
-|term_month|integer|null: false|
-|term_year|integer|null: false|
-|cvc|integer|null: false|
 |postal_code|string|null: false, unique: true|
 |prefectures_id|integer|null:false|
 |city|string|null: false|
