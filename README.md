@@ -1,24 +1,82 @@
-# README
+## Userテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column|Type|Option|
+|------|----|------|
+|name|string|null: false, unique: true|
+|email|string|null: false, unique: true|
+|password|string|null: false, unique:true|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|birthday_id|integer|null: false|
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+-has_many :items
+-has_many :Comments
+-has_many :item_purchases
 
-* System dependencies
 
-* Configuration
+## Itemテーブル
 
-* Database creation
+|Column|Type|Option|
+|------|----|------|
+|name|string|null: false|
+|explanation|text|
+|price|integer|null :false|
+|category_id|integer|null: false|
+|status_id|integer|null :false|
+|delivery_fee_id|integer|null :false|
+|area_id|integer|null :false|
+|term_id|integer|null :false|
+|user_id|integer|null: false, foreign_key: true|
 
-* Database initialization
+### Association
 
-* How to run the test suite
+-has_many :Comments
+-belongs_to :user
+-has_one :item_purchase
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Commentテーブル
 
-* ...
+|Column|Type|Option|
+|------|----|------|
+|content|string|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+
+### Association
+
+-belongs_to :item
+-belongs_to :user
+
+
+## Item_purchaseテーブル
+
+|Column|Type|Option|
+|------|----|------|
+|item_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+
+-belongs_to :user
+-belongs_to :item
+
+
+## Address
+
+|Column|Type|Option|
+|------|----|------|
+|postal_code|string|null: false, unique: true|
+|prefectures_id|integer|null:false|
+|city|string|null: false|
+|address|string|null:false|
+|building_name|string|
+|phone_number|string|null: false, unique: true|
+
+### Association
+
+-belongs_to :item_purchase
