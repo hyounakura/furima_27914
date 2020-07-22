@@ -2,59 +2,47 @@ require 'rails_helper'
 describe User do
   describe '#create' do
     context 'can save' do
-      it "is valid with a name, email, password, password_confirmation, family_name, first_name,
-  family_name_kana, first_name_kana, birthday_id" do
+      it "is valid with a name, email, password, password_confirmation,     family_name, first_name,family_name_kana, first_name_kana, birthday_id" do
         user = build(:user)
         expect(user).to be_valid
       end
     end
 
-    context 'can not sasve null' do
-      it "is invalid without a name" do
-        user = build(:user, name: nil)
+    context 'can not sasve null' do |user|
+      before do |user|
+        user = build(:user, {name: nil, email: nil, password: nil, family_name: nil, first_name: nil, family_name_kana: nil, first_name_kana: nil, birthday_id: nil})
         user.valid?
+      end
+      
+      it "is invalid without a name" do
         expect(user.errors[:name]).to include("can't be blank")
       end
 
       it "is invalid without a email" do
-        user = build(:user, email: nil)
-        user.valid?
         expect(user.errors[:email]).to include("can't be blank")
       end
 
       it "is invalid without a password" do
-        user = build(:user, password: nil)
-        user.valid?
         expect(user.errors[:password]).to include("can't be blank")
       end
 
       it "is invalid without a family_name" do
-        user = build(:user, family_name: nil)
-        user.valid?
         expect(user.errors[:family_name]).to include("can't be blank")
       end
 
       it "is invalid without a first_name" do
-        user = build(:user, first_name: nil)
-        user.valid?
         expect(user.errors[:first_name]).to include("can't be blank")
       end
 
       it "is invalid without a family_name_kana" do
-        user = build(:user, family_name_kana: nil)
-        user.valid?
         expect(user.errors[:family_name_kana]).to include("can't be blank")
       end
 
       it "is invalid without a first_name_kana" do
-        user = build(:user, first_name_kana: nil)
-        user.valid?
         expect(user.errors[:first_name_kana]).to include("can't be blank")
       end
 
       it "is invalid without a birthday_id" do
-        user = build(:user, birthday_id: nil)
-        user.valid?
         expect(user.errors[:birthday_id]).to include("can't be blank")
       end
     end
