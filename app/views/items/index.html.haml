@@ -108,8 +108,14 @@
               .star-btn
                 = image_tag "star.png", class:"star-icon"
                 %span.star-count 0
-.purchase-btn
-  %span.purchase-btn-text 出品する
-  %a{:href => "#"}
-    = image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon"
+- if user_signed_in?
+  = link_to new_item_path, class: "linkto-newitems" do
+    .purchase-btn
+      %span.spn_let 出品する
+      = icon('fas', 'camera',class: "purchase-btn-icon")
+- else
+  = link_to new_user_session_path, message: "You need to sign in or sign up before continuing.", class: "linkto-newitems" do
+    .purchase-btn
+      %span.spn_let 出品する
+      = icon('fas', 'camera',class: "purchase-btn-icon")
 = render "shared/footer"
