@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :items
+
   full_widht = /\A[一-龥ぁ-ん]/
   name_kana = /\A[ァ-ヶー－]+\z/
   alp_int = /\A[a-z]+[0-9]+\z/

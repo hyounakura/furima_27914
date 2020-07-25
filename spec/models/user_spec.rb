@@ -2,13 +2,13 @@ require 'rails_helper'
 describe User do
   describe '#create' do
     context 'can save' do
-      it 'is valid with a name, email, password, password_confirmation,     family_name, first_name,family_name_kana, first_name_kana, birthday_id' do
+      it 'is valid with a name, email, password, password_confirmation, family_name, first_name, family_name_kana, first_name_kana, birthday_id' do
         user = build(:user)
         expect(user).to be_valid
       end
     end
 
-    context 'can not sasve null' do |user|
+    context 'can not save null' do |user|
       before do
         user = build(:user, { name: nil, email: nil, password: nil, family_name: nil, first_name: nil, family_name_kana: nil, first_name_kana: nil, birthday_id: nil })
       end
@@ -54,7 +54,7 @@ describe User do
       end
     end
 
-    context 'can not sasve letter' do
+    context 'can not save letter' do
       it 'is invalid without big letter family_name' do
         user = build(:user, family_name: 'suzuki')
         user.valid?
