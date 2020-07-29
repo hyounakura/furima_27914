@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-    # image { File.open("#{Rails.root}/public/images/test_image.jpg") }
     name { 'バッグ' }
     explanation { '去年買いました。' }
     price { 5000 }

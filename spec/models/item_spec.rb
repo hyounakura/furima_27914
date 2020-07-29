@@ -98,15 +98,6 @@ RSpec.describe Item, type: :model do
       end
     end
 
-    context 'can not save value = 0' do |item|
-      it 'is valid area_id = 0' do
-        item = build(:item, area_id: 0)
-        item.image = fixture_file_upload('public/images/test_image.jpg')
-        item.valid?
-        expect(item.errors[:area_id]).to include('must be other than 0')
-      end
-    end
-
     context 'can not save value = ---' do |item|
       before do
         item = build(:item, { delivery_fee: '---', term: '---' })

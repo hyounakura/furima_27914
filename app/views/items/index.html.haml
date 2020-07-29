@@ -81,9 +81,9 @@
           = link_to item_path(item.id) do
             .item-img-content
               = image_tag item.image, class: "item-img" if item.image.present?
-              -# - if item.item_parchase_id.present?
-              -#   .sold-out
-              -#     %span Sold Out!!
+              - if item.item_parchase.present?
+                .sold-out
+                  %span Sold Out!!
             .item-info
               %h3.item-name
                 = item.name

@@ -47,7 +47,7 @@
             .weight-bold-text
               発送元の地域
               %span.indispensable 必須
-            = f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box"})
+            = f.collection_select(:area_id, Area.all, :id, :name, {include_blank: "---"}, {class:"select-box"})
             .weight-bold-text
               発送までの日数
               %span.indispensable 必須

@@ -5,20 +5,21 @@
       = @item.name
     .item-img-content
       = image_tag @item.image ,class:"item-box-img"
-      -# - if @item.item_parchase_id.present?
-      -#   .sold-out
-      -#     %span Sold Out!!
+      - if @item.item_parchase.present?
+        .sold-out
+          %span Sold Out!!
     .item-price-box
       %span.item-price
         = @item.price
       %span.item-postage
         (税込) 送料込み
-    - if user_signed_in? && current_user.id == @item.user_id
-      = link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn"
-      %p.or-text or
-      = link_to '削除', item_path, method: :delete, class:'item-destroy'
-    - if user_signed_in? && current_user.id != @item.user_id
-      = link_to '購入画面に進む', "#" ,class:"item-red-btn"
+    - if @item.item_parchase == nil
+      - if user_signed_in? && current_user.id == @item.user_id
+        = link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn"
+        %p.or-text or
+        = link_to '削除', item_path, method: :delete, class:'item-destroy'
+      - else
+        = link_to '購入画面に進む', item_item_parchases_path(@item.id) ,class:"item-red-btn"
     .item-explain-box
       %span= @item.explanation
     %table.detail-table
