@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :category
   belongs_to_active_hash :status
   belongs_to_active_hash :area
+  has_one :item_parchase
   belongs_to :user
   has_one_attached :image
 
@@ -10,10 +11,6 @@ class Item < ApplicationRecord
 
   with_options numericality: { other_than: 1 } do
     validates :category_id, :status_id
-  end
-
-  with_options numericality: { other_than: 0 } do
-    validates :area_id
   end
 
   with_options exclusion: { in: %w[---] } do

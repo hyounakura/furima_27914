@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :items
+  has_many :item_parchases
 
   full_widht = /\A[一-龥ぁ-ん]/
   name_kana = /\A[ァ-ヶー－]+\z/
