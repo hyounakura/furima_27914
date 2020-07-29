@@ -18,12 +18,12 @@ class ItemParchasesController < ApplicationController
     end
   end
 
-  
   private
+
   def set_item
     @item = Item.find(params[:item_id])
   end
-  
+
   def item_address_params
     params.require(:item_address).permit(:postal_code, :area_id, :city, :address, :building_name, :phone_number, :token).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
